@@ -7,6 +7,7 @@
 
 $primary: hsl(257, 40%, 49%);
 $secondary: #fff;
+$light-gray: #efefef;
 $body-font-family: 'Open Sans', sans-serif;
 $heading-font-family: 'Poppins', sans-serif;
 
@@ -15,21 +16,26 @@ $heading-font-family: 'Poppins', sans-serif;
  * Global Styles
  * ------------------ */
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   height: 100vh;
   display: grid;
   grid-template-rows: auto;
-  background: $primary url('../images/bg-mobile.svg');
+  background: $primary url('../images/bg-mobile.svg') no-repeat;
   color: $secondary;
   font: 16px $body-font-family;
   padding: 20px;
+  text-align: center;
 
   @media screen and (min-width: 376px) {
-    background: $primary url('../images/bg-desktop.svg')
+    background: $primary url('../images/bg-desktop.svg');
   }
 
   h1 {
-    font: 32px $heading-font-family;
+    font: 30px $heading-font-family;
   }
 }
 
@@ -50,9 +56,6 @@ main {
   }
 }
 
-.right-section {
-  padding: 20px;
-}
 
 button {
   background: $secondary;
@@ -61,5 +64,63 @@ button {
   padding: 10px 50px;
   border-radius: 25px;
   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
-  transition: ease 2s;
+}
+
+
+/* ------------------
+ * Main / Section Styles
+ * ------------------ */
+
+ footer {
+   display: grid;
+
+  .social-container {
+    place-self: center;
+  }
+
+   .social-media-icons {
+     height: 32px;
+     width: 32px;
+     margin-right: 10px;
+   }
+
+   .attribution {
+     font-size: 11px;
+     text-align: center;
+
+     a {
+       color: $light-gray;
+
+       &:focus,
+       &:active,
+       &:hover {
+         color: darken($light-gray, 10%);
+       }
+     }
+   }
+ }
+
+
+/* ------------------
+ * Desktop only Styles
+ * ------------------ */
+
+@media screen and (min-width: 376px) {
+
+  body,
+  h1,
+  p {
+    text-align: left;
+  }
+
+  .right-section {
+    padding: 20px;
+  }
+
+  footer {
+
+    .social-container {
+      place-self: center end;
+    }
+  }
 }
